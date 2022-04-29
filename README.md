@@ -1,2 +1,2 @@
-# notes_app_kotlin
+# demo.movieslist.notes_app_kotlin
 Quick playground for Kotlin
