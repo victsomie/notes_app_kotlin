@@ -55,39 +55,42 @@ class CreateNoteFragment : BaseFragment() {
         if (etNoteTitle.text.isNullOrEmpty()) {
             Toast.makeText(context, "Title required", Toast.LENGTH_SHORT).show();
 
+            return
         }
         if (etNoteSubTitle.text.isNullOrEmpty()) {
             Toast.makeText(context, "Sub title required", Toast.LENGTH_SHORT).show();
-
+            return
         }
 
         if (etNoteDesc.text.isNullOrEmpty()) {
             Toast.makeText(context, "Note Description is required", Toast.LENGTH_SHORT).show();
 
-        }
+            return
+        } else {
 
 
-        launch {
-            val notes = Notes()
+            launch {
+                val notes = Notes()
 
-            notes.title = etNoteTitle.text.toString()
-            notes.subTitle = etNoteSubTitle.text.toString()
-            notes.noteText = etNoteDesc.text.toString()
-            notes.dateTime = currentDate
-            notes.color = selectedColor
-            notes.imgPath = selectedImagePath
-            notes.webLink = webLink
+                notes.title = etNoteTitle.text.toString()
+                notes.subTitle = etNoteSubTitle.text.toString()
+                notes.noteText = etNoteDesc.text.toString()
+                notes.dateTime = currentDate
+                notes.color = selectedColor
+                notes.imgPath = selectedImagePath
+                notes.webLink = webLink
 
 
-            context?.let {
-                NotesDatabase.getDatabase(it).noteDao().insertNotes(notes)
-                etNoteTitle.setText("")
-                etNoteSubTitle.setText("")
-                etNoteDesc.setText("")
-                layoutImage.visibility = View.GONE
-                imgNote.visibility = View.GONE
-                tvWebLink.visibility = View.GONE
-                requireActivity().supportFragmentManager.popBackStack()
+                context?.let {
+                    NotesDatabase.getDatabase(it).noteDao().insertNotes(notes)
+                    etNoteTitle.setText("")
+                    etNoteSubTitle.setText("")
+                    etNoteDesc.setText("")
+                    layoutImage.visibility = View.GONE
+                    imgNote.visibility = View.GONE
+                    tvWebLink.visibility = View.GONE
+                    requireActivity().supportFragmentManager.popBackStack()
+                }
             }
         }
 
@@ -105,7 +108,7 @@ class CreateNoteFragment : BaseFragment() {
 
         imgDone.setOnClickListener {
             saveNote()
-            replaceFragment(HomeFragment.newInstance(), true)
+           // replaceFragment(HomeFragment.newInstance(), true)
         }
 
     }
