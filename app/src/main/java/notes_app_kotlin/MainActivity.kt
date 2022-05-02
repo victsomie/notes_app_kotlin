@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 
+// TUTORIAL: https://www.youtube.com/watch?v=3pqVT14-HyU&list=PLpc1_FLg4LiNaNnlU4wy8w67Dll-SuhrY&index=4
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
